@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Flow - UI Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['"DM Serif Display"', 'Georgia', 'serif'],
+                        'sans': ['"Outfit"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#fef7ee',
+                            100: '#fdedd6',
+                            200: '#fad7ac',
+                            300: '#f7ba77',
+                            400: '#f39140',
+                            500: '#f0731a',
+                            600: '#e15810',
+                            700: '#ba4110',
+                            800: '#943515',
+                            900: '#782e14',
+                        },
+                        accent: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ca3eb',
+                            600: '#0082c9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-slide-up { animation: slideUp 0.5s ease-out; }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-pulse-slow { animation: pulse 3s ease-in-out infinite; }
+        body { font-family: 'Outfit', system-ui, sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50">
+    <!-- Animated Background Blobs -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+        <div class="absolute top-0 -left-4 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
+        <div class="absolute top-0 -right-4 w-96 h-96 bg-accent-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow" style="animation-delay: 2s;"></div>
+        <div class="absolute -bottom-8 left-20 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Toggle Container -->
+    <div class="w-full max-w-2xl mx-auto px-4 py-12">
+        <!-- Tab Buttons -->
+        <div class="flex justify-center gap-4 mb-8">
+            <button onclick="showPayment()" id="paymentTab" class="px-6 py-2 rounded-xl font-semibold transition-all bg-primary-600 text-white shadow-lg">
+                Payment Form
+            </button>
+            <button onclick="showReceipt()" id="receiptTab" class="px-6 py-2 rounded-xl font-semibold transition-all bg-white text-primary-700 border-2 border-primary-200">
+                Receipt Preview
+            </button>
+        </div>
+
+        <!-- Payment Form Screen -->
+        <div id="paymentScreen" class="animate-slide-up">
+            <div class="text-center mb-8">
+                <h1 class="font-display text-5xl md:text-6xl text-primary-900 mb-3">
+                    Secure Payment
+                </h1>
+                <p class="text-lg text-gray-600 font-light">
+                    Complete your transaction safely
+                </p>
+            </div>
+
+            <form class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-10 border border-primary-100">
+                <div class="space-y-6">
+                    <!-- Cardholder Name -->
+                    <div class="animate-fade-in" style="animation-delay: 0.1s">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Cardholder Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="John Doe"
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all duration-200"
+                        />
+                    </div>
+
+                    <!-- Card Number -->
+                    <div class="animate-fade-in" style="animation-delay: 0.2s">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Card Number
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="1234 5678 9012 3456"
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all duration-200 font-mono text-lg tracking-wider"
+                        />
+                    </div>
+
+                    <!-- Expiry and CVV -->
+                    <div class="grid grid-cols-2 gap-4 animate-fade-in" style="animation-delay: 0.3s">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Expiry Date
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="MM/YY"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all duration-200 font-mono"
+                            />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                CVV
+                            </label>
+                            <input
+                                type="password"
+                                placeholder="123"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all duration-200 font-mono"
+                                maxlength="4"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Amount -->
+                    <div class="animate-fade-in" style="animation-delay: 0.4s">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Payment Amount
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg font-semibold">
+                                $
+                            </span>
+                            <input
+                                type="number"
+                                step="0.01"
+                                placeholder="0.00"
+                                class="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all duration-200 text-lg font-semibold"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="button"
+                        onclick="showReceipt()"
+                        class="w-full mt-8 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 animate-fade-in"
+                        style="animation-delay: 0.5s"
+                    >
+                        Pay Now
+                    </button>
+
+                    <!-- Security Note -->
+                    <p class="text-center text-xs text-gray-500 mt-4 animate-fade-in" style="animation-delay: 0.6s">
+                        🔒 Your payment information is secure and encrypted
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Receipt Screen -->
+        <div id="receiptScreen" class="hidden">
+            <!-- Success Icon -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mb-4 animate-pulse-slow">
+                    <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <h1 class="font-display text-5xl md:text-6xl text-green-600 mb-2">
+                    Payment Successful
+                </h1>
+                <p class="text-lg text-gray-600">
+                    Your transaction has been processed
+                </p>
+            </div>
+
+            <!-- Receipt Card -->
+            <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-primary-100">
+                <!-- Header -->
+                <div class="bg-gradient-to-r from-primary-500 to-primary-600 px-8 py-6">
+                    <h2 class="font-display text-2xl text-white mb-1">
+                        Transaction Receipt
+                    </h2>
+                    <p class="text-primary-50 text-sm">
+                        February 3, 2026, 2:30 PM
+                    </p>
+                </div>
+
+                <!-- Receipt Details -->
+                <div class="p-8 space-y-6">
+                    <!-- Transaction ID -->
+                    <div class="pb-6 border-b-2 border-dashed border-gray-200">
+                        <p class="text-sm text-gray-500 mb-1">Transaction ID</p>
+                        <p class="font-mono text-lg font-semibold text-gray-900">
+                            TXN-M3K8N1P-ABC12XY
+                        </p>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="flex items-center justify-between pb-6 border-b-2 border-dashed border-gray-200">
+                        <p class="text-sm text-gray-500">Status</p>
+                        <span class="inline-flex items-center px-4 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700">
+                            <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse-slow"></span>
+                            Success
+                        </span>
+                    </div>
+
+                    <!-- Cardholder Name -->
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm text-gray-500">Cardholder Name</p>
+                        <p class="font-semibold text-gray-900">John Doe</p>
+                    </div>
+
+                    <!-- Card Number -->
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm text-gray-500">Card Number</p>
+                        <p class="font-mono font-semibold text-gray-900">
+                            **** **** **** 3456
+                        </p>
+                    </div>
+
+                    <!-- Expiry Date -->
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm text-gray-500">Expiry Date</p>
+                        <p class="font-mono font-semibold text-gray-900">12/27</p>
+                    </div>
+
+                    <!-- Amount - Highlighted -->
+                    <div class="bg-gradient-to-br from-accent-50 to-primary-50 rounded-2xl p-6 mt-6 border-2 border-primary-200">
+                        <div class="flex items-center justify-between">
+                            <p class="text-gray-700 font-medium">Payment Amount</p>
+                            <p class="font-display text-4xl text-primary-700">
+                                $99.99
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="px-8 pb-8 space-y-3">
+                    <button class="w-full bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+                        📥 Download Receipt
+                    </button>
+                    
+                    <button onclick="showPayment()" class="w-full bg-white border-2 border-primary-200 hover:border-primary-300 text-primary-700 font-semibold py-3 rounded-xl hover:bg-primary-50 transition-all duration-200">
+                        Make Another Payment
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer Note -->
+            <p class="text-center text-sm text-gray-500 mt-6">
+                Please save this receipt for your records
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showPayment() {
+            document.getElementById('paymentScreen').classList.remove('hidden');
+            document.getElementById('receiptScreen').classList.add('hidden');
+            document.getElementById('paymentTab').classList.remove('bg-white', 'text-primary-700', 'border-2', 'border-primary-200');
+            document.getElementById('paymentTab').classList.add('bg-primary-600', 'text-white', 'shadow-lg');
+            document.getElementById('receiptTab').classList.remove('bg-primary-600', 'text-white', 'shadow-lg');
+            document.getElementById('receiptTab').classList.add('bg-white', 'text-primary-700', 'border-2', 'border-primary-200');
+        }
+
+        function showReceipt() {
+            document.getElementById('paymentScreen').classList.add('hidden');
+            document.getElementById('receiptScreen').classList.remove('hidden');
+            document.getElementById('receiptTab').classList.remove('bg-white', 'text-primary-700', 'border-2', 'border-primary-200');
+            document.getElementById('receiptTab').classList.add('bg-primary-600', 'text-white', 'shadow-lg');
+            document.getElementById('paymentTab').classList.remove('bg-primary-600', 'text-white', 'shadow-lg');
+            document.getElementById('paymentTab').classList.add('bg-white', 'text-primary-700', 'border-2', 'border-primary-200');
+        }
+    </script>
+</body>
+</html>
