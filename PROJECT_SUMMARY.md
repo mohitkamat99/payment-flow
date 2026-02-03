@@ -7,6 +7,7 @@ This is a complete **2-screen payment flow application** built using modern web 
 ## ✅ Assignment Requirements Met
 
 ### Tech Stack (All Required)
+
 - ✅ **Astro** - Static site framework
 - ✅ **SolidJS** - Reactive UI components
 - ✅ **TypeScript** - Strict typing throughout
@@ -15,12 +16,14 @@ This is a complete **2-screen payment flow application** built using modern web 
 - ✅ **GitHub** - Ready to push
 
 ### AI Usage
+
 - ✅ **Claude (Sonnet 4.5)** by Anthropic was used extensively
 - ✅ Documented in README.md
 
 ### Functional Requirements
 
 #### Screen 1: Payment Form (/)
+
 - ✅ Name on card field
 - ✅ Credit card number (16 digits, auto-formatted)
 - ✅ Expiry date (MM/YY format)
@@ -32,8 +35,9 @@ This is a complete **2-screen payment flow application** built using modern web 
 - ✅ Simulated successful payment (1.5s delay)
 
 #### Screen 2: Transaction Receipt (/receipt)
+
 - ✅ Cardholder name displayed
-- ✅ Masked card number (**** **** **** 1234)
+- ✅ Masked card number (\***\* \*\*** \*\*\*\* 1234)
 - ✅ Expiry date displayed
 - ✅ Payment amount displayed
 - ✅ Transaction status: Success
@@ -42,6 +46,7 @@ This is a complete **2-screen payment flow application** built using modern web 
 - ✅ Additional: "Make Another Payment" button
 
 ### Technical Expectations
+
 - ✅ SolidJS components inside Astro pages
 - ✅ Proper TypeScript typing (strict mode)
 - ✅ Clean component structure with separation of concerns
@@ -50,6 +55,7 @@ This is a complete **2-screen payment flow application** built using modern web 
 - ✅ No backend required (client-only simulation)
 
 ### Deployment Requirements
+
 - ✅ Code ready for public GitHub repository
 - ✅ Vercel deployment configuration included
 - ✅ vercel.json configured
@@ -57,8 +63,9 @@ This is a complete **2-screen payment flow application** built using modern web 
 - ✅ GitHub Actions CI/CD workflow included
 
 ### README Requirements
+
 - ✅ Project setup steps (detailed)
-- ✅ AI tool used (Claude Sonnet 4.5)
+- ✅ AI tool used (Claude Sonnet 4.5, Gemini 3 Pro (Testing))
 - ✅ Architecture explanation (comprehensive)
 - ✅ Deployment link placeholder
 - ✅ Additional: Security notes, testing guide, design philosophy
@@ -66,6 +73,7 @@ This is a complete **2-screen payment flow application** built using modern web 
 ## 🎯 Key Features Implemented
 
 ### Advanced Features Beyond Requirements
+
 1. **Input Formatting**
    - Card number auto-formats with spaces
    - Expiry date auto-formats as MM/YY
@@ -100,15 +108,15 @@ This is a complete **2-screen payment flow application** built using modern web 
 payment-flow/
 ├── src/
 │   ├── components/
-│   │   ├── PaymentForm.tsx           (410 lines)
-│   │   └── TransactionReceipt.tsx    (245 lines)
+│   │   ├── PaymentForm.tsx
+│   │   └── TransactionReceipt.tsx
 │   ├── layouts/
-│   │   └── BaseLayout.astro          (27 lines)
+│   │   └── BaseLayout.astro
 │   ├── pages/
-│   │   ├── index.astro               (8 lines)
-│   │   └── receipt.astro             (8 lines)
-│   ├── types.ts                      (18 lines)
-│   └── utils.ts                      (87 lines)
+│   │   ├── index.astro
+│   │   └── receipt.astro
+│   ├── types.ts
+│   └── utils.ts
 ├── public/
 │   └── favicon.svg
 ├── .github/
@@ -146,6 +154,7 @@ npm run astro check
 ## 🌐 Deployment Steps
 
 ### GitHub
+
 1. Create new repository on GitHub
 2. Initialize git: `git init`
 3. Add remote: `git remote add origin <your-repo-url>`
@@ -153,6 +162,7 @@ npm run astro check
 5. Push: `git push -u origin main`
 
 ### Vercel
+
 1. Go to vercel.com
 2. Click "New Project"
 3. Import your GitHub repository
@@ -162,16 +172,19 @@ npm run astro check
 ## 🎨 Design Highlights
 
 ### Color Palette
+
 - **Primary**: Warm orange (#f0731a) - Trust and energy
 - **Accent**: Bright blue (#0ca3eb) - Professionalism
 - **Success**: Green (#22c55e) - Confirmation
 - **Neutrals**: Grays for text hierarchy
 
 ### Typography
+
 - **Headings**: DM Serif Display (elegant, memorable)
 - **Body**: Outfit (modern, highly readable)
 
 ### Animations
+
 - Slide-up entrance animations
 - Fade-in for content reveals
 - Scale-in for receipt card
@@ -181,6 +194,7 @@ npm run astro check
 ## 🧪 Testing Checklist
 
 ### Functionality Tests
+
 - [x] Form accepts all valid inputs
 - [x] Validation errors show correctly
 - [x] Card number formats automatically
@@ -195,6 +209,7 @@ npm run astro check
 - [x] "Make Another Payment" returns to form
 
 ### UI/UX Tests
+
 - [x] Responsive on mobile devices
 - [x] Animations are smooth
 - [x] Colors have good contrast
@@ -235,6 +250,7 @@ Claude (Sonnet 4.5) assisted with:
 **IMPORTANT**: This is a demonstration project only!
 
 In production, you must:
+
 - Use server-side payment processing
 - Integrate with PCI DSS compliant providers (Stripe, PayPal)
 - Never store full card numbers or CVV
@@ -293,6 +309,7 @@ In production, you must:
 ## 🎓 Learning Outcomes
 
 This project demonstrates:
+
 - Modern web development practices
 - Type-safe JavaScript with TypeScript
 - Reactive programming with SolidJS
@@ -308,6 +325,7 @@ This project demonstrates:
 To complete the assignment:
 
 1. **Push to GitHub**
+
    ```bash
    git init
    git add .
