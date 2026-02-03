@@ -117,7 +117,10 @@ const PaymentForm: Component = () => {
                 type="text"
                 value={formData().cardholderName}
                 onInput={(e) =>
-                  handleInputChange("cardholderName", e.currentTarget.value)
+                  handleInputChange(
+                    "cardholderName",
+                    e.currentTarget.value.replace(/\d/g, ""),
+                  )
                 }
                 placeholder="John Doe"
                 class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all duration-200"

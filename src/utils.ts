@@ -37,6 +37,8 @@ export const validateForm = (data: PaymentFormData): ValidationErrors => {
 
   if (!data.cardholderName.trim()) {
     errors.cardholderName = "Cardholder name is required";
+  } else if (/\d/.test(data.cardholderName)) {
+    errors.cardholderName = "Cardholder name cannot contain numbers";
   }
 
   if (!validateCardNumber(data.cardNumber)) {
