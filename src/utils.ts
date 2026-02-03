@@ -29,7 +29,8 @@ export const validateCVV = (cvv: string): boolean => {
 
 export const validateAmount = (amount: string): boolean => {
   const num = parseFloat(amount);
-  return !isNaN(num) && num > 0;
+  const decimals = amount.split(".")[1]?.length || 0;
+  return !isNaN(num) && num > 0 && decimals <= 2;
 };
 
 export const validateForm = (data: PaymentFormData): ValidationErrors => {

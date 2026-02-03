@@ -198,8 +198,21 @@ const PaymentForm: Component = () => {
                   $
                 </span>
                 <input
-                  type="number"
-                  step="0.01"
+                  type="text"
+                  onKeyDown={(e) => {
+                    if (e.key === "Backspace" || e.key === "Delete") {
+                      return;
+                    }
+                    // allow only numbers and one dot
+                    if (!/^[0-9.]*$/.test(e.key)) {
+                      e.preventDefault();
+                    }
+                    if (e.key === ".") {
+                      if (formData().amount.includes(".")) {
+                        e.preventDefault();
+                      }
+                    }
+                  }}
                   value={formData().amount}
                   onInput={(e) =>
                     handleInputChange("amount", e.currentTarget.value)
