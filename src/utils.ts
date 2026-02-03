@@ -24,7 +24,7 @@ export const validateExpiryDate = (expiryDate: string): boolean => {
 };
 
 export const validateCVV = (cvv: string): boolean => {
-  return /^\d{3,4}$/.test(cvv);
+  return /^\d{3}$/.test(cvv);
 };
 
 export const validateAmount = (amount: string): boolean => {
@@ -49,7 +49,7 @@ export const validateForm = (data: PaymentFormData): ValidationErrors => {
   }
 
   if (!validateCVV(data.cvv)) {
-    errors.cvv = "Invalid CVV (3-4 digits required)";
+    errors.cvv = "Invalid CVV (3 digits required)";
   }
 
   if (!validateAmount(data.amount)) {

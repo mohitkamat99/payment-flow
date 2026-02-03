@@ -24,6 +24,7 @@ This project was developed with assistance from **Claude (Sonnet 4.5)** by Anthr
 - Tailwind CSS custom theme configuration
 - Form validation and error handling
 - Transaction flow implementation
+- Testing and bug fixes used **GEMINI AI**
 
 ## 🏗️ Architecture
 
@@ -95,7 +96,7 @@ payment-flow/
 
 - Card number: 16 digits with Luhn algorithm consideration
 - Expiry date: MM/YY format with future date validation
-- CVV: 3-4 digits
+- CVV: 3 digits
 - Amount: Positive number with decimal support
 
 **Security Features:**

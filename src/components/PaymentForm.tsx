@@ -177,7 +177,7 @@ const PaymentForm: Component = () => {
                   onInput={handleCVVChange}
                   placeholder="123"
                   class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none transition-all duration-200 font-mono"
-                  maxlength="4"
+                  maxlength="3"
                 />
                 <Show when={errors().cvv}>
                   <p class="text-red-500 text-sm mt-1">{errors().cvv}</p>
